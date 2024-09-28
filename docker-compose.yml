@@ -1,0 +1,21 @@
+version: '2.3'
+services:
+  vpn-service:
+    image: 10.32.233.112/test/vpn:20201210
+    container_name: vpn_server
+    restart: always
+    privileged: true
+    cap_add:
+    - NET_ADMIN
+    ports:
+    - 500:500/udp
+    - 1701:1701/tcp
+    - 1197:1194/udp
+    - 4500:4500/udp
+    - 5558:5555/tcp
+    environment:
+    - SPW=<super password>
+    #- http_proxy=http://10.32.233.124:3128
+    #- https_proxy=http://10.32.233.124:3128
+    #volumes:
+    # - /opt/vpn/vpn_server.config:/usr/vpnserver/vpn_server.config
